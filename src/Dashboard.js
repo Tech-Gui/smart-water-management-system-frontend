@@ -13,8 +13,7 @@ import Sidebar from "./SideBar";
 
 function Dashboard() {
   return (
-    <Container
-      fluid
+    <div
       className="d-flex flex-row"
       style={{ minHeight: "100vh", maxHeight: "100vh", background: "#f2f2f2" }}
     >
@@ -117,7 +116,7 @@ function Dashboard() {
           </Col>
         </Row>
       </Container>
-    </Container>
+    </div>
   );
 }
 
