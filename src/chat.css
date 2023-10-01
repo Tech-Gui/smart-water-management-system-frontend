@@ -1,0 +1,51 @@
+/* CSS for chat bubbles */
+.chat-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-message {
+  padding: 8px;
+  margin: 8px;
+  max-width: 70%; /* Adjust the maximum width as needed */
+  word-wrap: break-word;
+  border-radius: 8px;
+}
+
+.user {
+  align-self: flex-end;
+  background-color: #333;
+  color: #fff;
+}
+
+.bot {
+  align-self: flex-start;
+  background-color: #68e7fd; /* Bot message background color */
+}
+
+/* CSS for chat container and wrapper */
+.chat-container-wrapper {
+  max-height: 60vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column-reverse; /* To display new messages at the bottom */
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
+
+.chat-container {
+  flex-grow: 1;
+}
+
+/* Add this CSS to your stylesheets */
+.custom-button {
+  background-color: #333; /* Change to your desired dark background color */
+  color: #fff; /* Change to the text color you prefer */
+  border: none; /* Remove the button border if needed */
+  /* Add any other styles as needed */
+}
+
+.custom-button:hover {
+  background-color: #555; /* Change to a darker color on hover if desired */
+  /* Add any other hover styles as needed */
+}
