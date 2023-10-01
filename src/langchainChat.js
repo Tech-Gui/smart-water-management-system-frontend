@@ -48,7 +48,7 @@ function QuestionPage() {
       <Container>
         <Header />
         <Row className="d-flex justify-content-center">
-          <Col md={7}>
+          <Col md={6}>
             <Card style={{ minHeight: "75vh" }}>
               <Card.Header
                 style={{
