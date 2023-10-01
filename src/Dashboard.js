@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import BarChart from "./components/Daily";
 import GardenComponent from "./components/gardenComponent";
@@ -12,6 +12,39 @@ import TestResults from "./components/TestResults";
 import Sidebar from "./SideBar";
 
 function Dashboard() {
+  const [soilMoisture, setSoilMoisture] = useState(null);
+
+  useEffect(() => {
+    // Define a function to fetch data and update state
+    const fetchData = () => {
+      fetch("https://one-more-thing-2-0b78fb9fe4b4.herokuapp.com/temperature")
+        .then((response) => response.json())
+        .then((data) => {
+          // Check if data is an array and has at least one element
+          if (Array.isArray(data) && data.length > 0) {
+            // Get the last element from the array and access its "value" property
+            const fetchedSoilMoisture = data[data.length - 1].value;
+            setSoilMoisture(fetchedSoilMoisture);
+          } else {
+            // Handle the case where data is empty or not an array
+            console.error("Invalid data format or empty data");
+          }
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+        });
+    };
+
+    // Initially fetch data when the component mounts
+    fetchData();
+
+    // Set up an interval to fetch data every 2 seconds
+    const intervalId = setInterval(fetchData, 2000);
+
+    // Clean up the interval when the component unmounts
+    return () => clearInterval(intervalId);
+  }, []); // The empty dependency array ensures this effect runs once when the component mounts
+
   return (
     <div
       className="d-flex flex-row"
@@ -83,7 +116,9 @@ function Dashboard() {
                 <GardenComponent
                   imageUrl="/humidity.png"
                   parameter="Soil Moisture"
-                  value="75%"
+                  value={
+                    soilMoisture !== null ? `${soilMoisture}%` : "Loading..."
+                  }
                 />
 
                 <GardenComponent
