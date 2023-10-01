@@ -9,10 +9,14 @@ function ChatbotPage() {
   const [message, setMessage] = useState("");
   const [response, setResponse] = useState("");
   const [chatHistory, setChatHistory] = useState([]);
+  const [userText, setUserText] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setUserText("");
 
+    // Update chatHistory with the current conversation
+    setChatHistory([...chatHistory, { role: "user", content: message }]);
     // Hit your chat endpoint
     const result = await fetch(
       "https://one-more-thing-2-0b78fb9fe4b4.herokuapp.com/chat",
@@ -95,8 +99,11 @@ function ChatbotPage() {
                     <Form.Control
                       type="text"
                       placeholder="Type your message..."
-                      value={message}
-                      onChange={(e) => setMessage(e.target.value)}
+                      value={userText}
+                      onChange={(e) => {
+                        setMessage(e.target.value);
+                        setUserText(e.target.value); // Assuming setUserText is a valid state updater function
+                      }}
                       style={{ width: "100%" }}
                     />
                   </Form.Group>
