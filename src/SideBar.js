@@ -1,92 +1,112 @@
 import React from "react";
-import { Navbar, Nav, Image, Button } from "react-bootstrap";
-import { Link, useLocation } from "react-router-dom"; // Import useLocation
-
+import { Navbar, Nav, Image } from "react-bootstrap";
+import { Link, useLocation } from "react-router-dom";
 import {
   RxDashboard,
   RxLightningBolt,
+  RxGear,
   RxChatBubble,
   RxPinLeft,
 } from "react-icons/rx";
 import { BiSupport } from "react-icons/bi";
-function Sidebar() {
-  // Get the current location
-  const location = useLocation();
 
-  // Define a function to determine if a link is active
+function Sidebar() {
+  const location = useLocation();
   const isLinkActive = (path) => location.pathname === path;
 
   return (
     <Navbar
       expand="lg"
-      variant="dark"
-      className="bg-dark flex-column"
+      className="flex-column"
       style={{
         width: "8rem",
-      }}
-    >
-      <Navbar.Brand as={Link} to="/dashboard">
-        <Image src={"/logo.png"} alt="Logo" width="50px" />
+        backgroundColor: "#fff",
+        borderRight: "1px solid rgba(0,0,0,.125)",
+        boxShadow: "0 0.125rem 0.25rem rgba(0,0,0,.075)",
+        minHeight: "100vh",
+        position: "relative",
+        zIndex: 1000,
+      }}>
+      <Navbar.Brand
+        style={{ marginLeft: "1rem" }}
+        as={Link}
+        to="/dashboard"
+        className="d-flex justify-content-center w-100 py-4">
+        <Image src="/logo3.png" alt="Logo" width="50px" />
       </Navbar.Brand>
 
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="flex-column gap-5">
+
+      <Navbar.Collapse id="basic-navbar-nav" className="w-100">
+        <Nav className="flex-column gap-5 align-items-center w-100 py-4">
           <Nav.Link
             as={Link}
             to="/dashboard"
+            className="w-100 d-flex justify-content-center py-2"
             style={{
-              color: "#68E7FD",
+              color: "#444",
               backgroundColor: isLinkActive("/dashboard")
-                ? "#333"
-                : "transparent", // Set the background color conditionally
-            }}
-          >
+                ? "#f8f9fa"
+                : "transparent",
+              transition: "background-color 0.2s ease",
+            }}>
             <RxDashboard size={30} />
-          </Nav.Link>{" "}
+          </Nav.Link>
+
           <Nav.Link
             as={Link}
             to="/action"
+            className="w-100 d-flex justify-content-center py-2"
             style={{
-              color: "#68E7FD",
-              backgroundColor: isLinkActive("/action") ? "#333" : "transparent", // Set the background color conditionally
-            }}
-          >
-            <RxLightningBolt size={30} />
-          </Nav.Link>{" "}
+              color: "#444",
+              backgroundColor: isLinkActive("/action")
+                ? "#f8f9fa"
+                : "transparent",
+              transition: "background-color 0.2s ease",
+            }}>
+            <RxGear size={30} />
+          </Nav.Link>
+
           <Nav.Link
             as={Link}
             to="/chat"
+            className="w-100 d-flex justify-content-center py-2"
             style={{
-              color: "#68E7FD",
-              backgroundColor: isLinkActive("/chat") ? "#333" : "transparent", // Set the background color conditionally
-            }}
-          >
+              color: "#444",
+              backgroundColor: isLinkActive("/chat")
+                ? "#f8f9fa"
+                : "transparent",
+              transition: "background-color 0.2s ease",
+            }}>
             <RxChatBubble size={30} />
-          </Nav.Link>{" "}
+          </Nav.Link>
+
           <Nav.Link
             as={Link}
             to="/questions"
+            className="w-100 d-flex justify-content-center py-2"
             style={{
-              color: "#68E7FD",
+              color: "#444",
               backgroundColor: isLinkActive("/questions")
-                ? "#333"
-                : "transparent", // Set the background color conditionally
-            }}
-          >
+                ? "#f8f9fa"
+                : "transparent",
+              transition: "background-color 0.2s ease",
+            }}>
             <BiSupport size={30} />
-          </Nav.Link>{" "}
+          </Nav.Link>
         </Nav>
       </Navbar.Collapse>
 
       <div
+        className="d-flex flex-column align-items-center mt-auto pb-4"
         style={{
-          color: "#68E7FD",
-          paddingBottom: "2rem",
-        }}
-      >
+          color: "#444",
+          cursor: "pointer",
+        }}>
         <RxPinLeft size={30} />
-        <div style={{ color: "#fff" }}>Logout</div>
+        <div style={{ color: "#666", fontSize: "0.9rem", marginTop: "0.5rem" }}>
+          Logout
+        </div>
       </div>
     </Navbar>
   );

@@ -21,12 +21,12 @@ ChartJS.register(
 );
 
 export const data = {
-  labels: ["January", "February", "March", "April", "May"], // Labels for the X-axis
+  labels: ["Mon", "Tue", "Wed", "Thu", "Fri"], // Labels for the X-axis
   datasets: [
     {
-      label: "Water levels",
-      data: [15000, 10200, 9800, 5300, 4900], // Your data points for the Y-axis
-      borderColor: "#68E7FD", // Line color
+      label: "KWh",
+      data: [15000, 10200, 9800, 5300, 3200], // Your data points for the Y-axis
+      borderColor: "red", // Line color
       backgroundColor: "rgba(78, 27, 180, 0.2)", // Area under the line fill color
       borderWidth: 2, // Line width
       pointRadius: 2, // Point radius

@@ -6,14 +6,13 @@ function Header() {
     <div>
       <Col
         md={12}
-        className="d-flex justify-content-between align-items-center mt-2"
-      >
+        className="d-flex justify-content-between align-items-center mt-2">
         {/* Company Name */}
         <div>
           <span style={{ fontWeight: "bold", fontSize: "1.2rem" }}>
-            Dropwise Hydrotech Solution
+            Overview
           </span>
-          <div style={{ fontSize: "0.8rem" }}>By Team One More Thing</div>
+          <div style={{ fontSize: "0.8rem" }}>Take a quick view</div>
           <br />
         </div>
         {/* Profile Picture */}
@@ -26,7 +25,7 @@ function Header() {
             </Col>
             <Col md={4}>
               <Image
-                src="isaiahDP.png"
+                src="isaiahDP.jpg"
                 alt="Profile"
                 roundedCircle
                 width={50}

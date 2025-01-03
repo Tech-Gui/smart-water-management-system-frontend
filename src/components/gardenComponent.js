@@ -11,7 +11,7 @@ function GardenComponent({ imageUrl, parameter, value }) {
   };
 
   const imageStyle = {
-    width: "80px", // Adjust the image width as needed
+    width: "60px", // Adjust the image width as needed
     marginRight: "40px", // Space between image and text
   };
 
